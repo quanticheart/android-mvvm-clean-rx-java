@@ -2,7 +2,7 @@ package com.example.MvvmCleanRxJava
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.MvvmCleanRxJava.retrofit.model.Api
+import com.quanticheart.model.repository.posts.PostsRepositoryImpl
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,6 +13,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Api.getPost()
+        PostsRepositoryImpl.getPost()
     }
 }
