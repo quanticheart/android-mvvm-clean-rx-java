@@ -16,7 +16,7 @@ class PostsRepositoryImpl(private val api: EndpointPosts) : PostsRepository {
      *
      * https://gorest.co.in/rest-console.html
      */
-    override suspend fun getPosts(): Result<List<Posts>>? {
+    override suspend fun getPosts(): Result<List<Posts>> {
         Repository.getPostsConection().getPosts()
             .defaultConfig()
             .subscribe(object :

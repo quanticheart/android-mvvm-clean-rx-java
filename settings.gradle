@@ -1,2 +1,2 @@
-include ':app', ':connection', ':repository', ':domain'
+include ':app', ':connection', ':repository', ':domain', ':core'
 rootProject.name='RxJava'

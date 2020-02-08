@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
@@ -41,4 +42,13 @@ dependencies {
 
     implementation project(':domain')
     implementation project(':repository')
+    implementation project(':core')
+
+    def room_version = "2.2.3"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+
+    implementation "org.koin:koin-android:2.0.1"
+    implementation "org.koin:koin-android-viewmodel:2.0.1"
 }
