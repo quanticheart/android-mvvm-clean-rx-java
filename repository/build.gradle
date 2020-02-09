@@ -34,6 +34,11 @@ dependencies {
     implementation project(':connection')
     implementation connectionDependencies
 
+    // Koin for Android
+    implementation 'org.koin:koin-android:2.0.1'
+    // or Koin for Android Architecture ViewModel
+    implementation 'org.koin:koin-android-viewmodel:2.0.1'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

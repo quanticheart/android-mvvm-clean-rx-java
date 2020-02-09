@@ -1,4 +1,4 @@
-package com.example.MvvmCleanRxJava
+package com.example.mvvmCleanRxJava
 
 import org.junit.Test
 

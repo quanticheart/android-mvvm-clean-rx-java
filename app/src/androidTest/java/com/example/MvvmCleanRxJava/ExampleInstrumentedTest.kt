@@ -1,4 +1,4 @@
-package com.example.MvvmCleanRxJava
+package com.example.mvvmCleanRxJava
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

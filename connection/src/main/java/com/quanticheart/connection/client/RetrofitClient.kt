@@ -1,7 +1,6 @@
 package com.quanticheart.connection.client
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import com.quanticheart.connection.BuildConfig
 import com.quanticheart.connection.model.ConnectionModel
 import okhttp3.Interceptor
@@ -105,5 +104,4 @@ object RetrofitClient {
             throw RuntimeException(e)
         }
     }
-
 }

@@ -43,7 +43,7 @@ open class BaseResponse<T> : Serializable {
      */
     @SerializedName("code")
     @Expose
-    var code: String = ""
+    var httpCode: String = ""
 
     /**
      *  interface for entity's data

@@ -6,8 +6,6 @@ dependencies {
     implementation connectionDependencies
     // Koin for Android
     implementation 'org.koin:koin-android:2.0.1'
-    // or Koin for Lifecycle scoping
-    implementation 'org.koin:koin-android-scope:2.0.1'
     // or Koin for Android Architecture ViewModel
     implementation 'org.koin:koin-android-viewmodel:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
