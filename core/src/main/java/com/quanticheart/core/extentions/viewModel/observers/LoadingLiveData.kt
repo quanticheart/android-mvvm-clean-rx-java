@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 
 class LoadingLiveData : LiveData<Boolean>() {
 
-//    init {
-//        postValue(false)
-//    }
+    init {
+        postValue(false)
+    }
 
     fun show() {
         postValue(true)

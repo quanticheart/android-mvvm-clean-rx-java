@@ -25,6 +25,10 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
 
     override fun initLayout(savedInstanceState: Bundle?) {
         adapter = NewsAdapter(recycler_view)
+        refresh.setOnRefreshListener {
+            viewModel.getNewsListFromWs()
+            refresh.isRefreshing = false
+        }
     }
 
     override fun initViewModel(viewModel: MainActivityViewModel) {

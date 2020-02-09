@@ -26,8 +26,7 @@ abstract class BaseViewModel(context: Context? = null) : ViewModel() {
     /**
      * This Vars for control loading status
      */
-    protected val _loadingState =
-        LoadingLiveData()
+    protected val _loadingState = LoadingLiveData()
     val loading: LiveData<Boolean>
         get() = _loadingState
 
@@ -35,11 +34,15 @@ abstract class BaseViewModel(context: Context? = null) : ViewModel() {
         _loadingState.hide()
     }
 
+    protected fun initUserCase() {
+        _loadingState.show()
+    }
+
     /**
      * Exec funs for view model
      */
     protected fun executeUseCase(action: () -> Unit, noInternetAction: () -> Unit) {
-        _loadingState.show()
+        initUserCase()
         if (connectionStatus.value == true) {
             action()
         } else {
@@ -48,7 +51,7 @@ abstract class BaseViewModel(context: Context? = null) : ViewModel() {
     }
 
     protected fun executeUseCase(action: () -> Unit) {
-        _loadingState.show()
+        initUserCase()
         action()
     }
 
