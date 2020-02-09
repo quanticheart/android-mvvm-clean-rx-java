@@ -41,7 +41,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.net.*
 import android.net.ConnectivityManager.NetworkCallback
-import com.quanticheart.core.extentions.logW
+import com.quanticheart.core.extentions.extentions.logW
 
 @Suppress("unused")
 class NetworkMonitor : NetworkCallback() {

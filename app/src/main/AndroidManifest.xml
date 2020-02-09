@@ -3,7 +3,7 @@
     package="com.example.mvvmCleanRxJava">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:name="com.example.mvvmCleanRxJava.application.AppApplication"
         android:allowBackup="true"

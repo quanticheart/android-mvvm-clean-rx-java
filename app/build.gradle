@@ -58,7 +58,7 @@ dependencies {
     implementation 'org.koin:koin-android-viewmodel:2.0.1'
     implementation connectionDependencies
 
-    implementation 'androidx.recyclerview:recyclerview:1.0.0' //Update to latest version
+    implementation 'androidx.recyclerview:recyclerview:1.1.0' //Update to latest version
     implementation 'androidx.cardview:cardview:1.0.0'
-
+    implementation 'com.google.android.material:material:1.1.0'
 }
