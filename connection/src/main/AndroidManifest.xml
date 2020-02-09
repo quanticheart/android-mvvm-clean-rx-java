@@ -1,5 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.quanticheart.connection" >
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    package="com.quanticheart.connection">
 </manifest>

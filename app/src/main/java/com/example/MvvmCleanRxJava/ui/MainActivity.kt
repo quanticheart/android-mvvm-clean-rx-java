@@ -3,8 +3,10 @@ package com.example.mvvmCleanRxJava.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.mvvmCleanRxJava.NetworkMonitor
 import com.example.mvvmCleanRxJava.R
 import com.example.mvvmCleanRxJava.ui.adapter.NewsAdapter
+import com.quanticheart.core.extentions.logW
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -15,6 +17,9 @@ class MainActivity : AppCompatActivity() {
      * https://newsapi.org/docs/get-started
      *
      * https://cobe.tech/blog/post/developing-android-apps-with-kotlin-and-clean-architecture/
+     *
+     * map or flatmap
+     * https://medium.com/@R00We/different-between-map-and-flatmap-in-rx-e4230355f17f
      */
 
     private val viewModel: MainActivityViewModel by viewModel()
@@ -24,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initLayout()
         initViewModel()
-
     }
 
     private fun initLayout() {
@@ -34,7 +38,12 @@ class MainActivity : AppCompatActivity() {
     private fun initViewModel() {
         viewModel.getList().observe(this, Observer {
             adapter.addItens(it)
-            flipper.displayedChild = 1
+        })
+        viewModel.connectionStatus.observe(this, Observer {
+            it.logW()
+        })
+        viewModel.loading.observe(this, Observer {
+            flipper.displayedChild = if (it) 0 else 1
         })
         viewModel.getNewsListFromWs()
     }
