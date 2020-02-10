@@ -6,8 +6,6 @@ import com.example.mvvmCleanRxJava.application.AppApplication
 import com.quanticheart.core.extentions.viewModel.base.BaseViewModel
 import com.quanticheart.domain.interection.news.GetNewsUserCase
 import com.quanticheart.domain.model.News
-import io.reactivex.SingleObserver
-import io.reactivex.disposables.Disposable
 
 class MainActivityViewModel(private val userCase: GetNewsUserCase) :
     BaseViewModel(AppApplication.context) {
@@ -18,19 +16,10 @@ class MainActivityViewModel(private val userCase: GetNewsUserCase) :
 
     fun getNewsListFromWs() {
         executeUseCase {
-            userCase.getNews().subscribe(object : SingleObserver<List<News>> {
-                override fun onSuccess(t: List<News>) {
-                    listNews.value = t
-                    finishUserCase()
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                    finishUserCase()
-                }
-
-                override fun onError(e: Throwable) {
-                    finishUserCase()
-                }
+            userCase.getNews().execute({
+                listNews.value = it
+            }, {
+                it.errorUserCase()
             })
         }
     }

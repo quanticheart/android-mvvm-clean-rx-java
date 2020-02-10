@@ -22,6 +22,13 @@ import androidx.lifecycle.LiveData
 class ConnectivityLiveData(private val context: Context?) : LiveData<Boolean>() {
     private var connectivityManager: ConnectivityManager? = null
 
+    init {
+        context?.let {
+            connectivityManager =
+                it.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        }
+    }
+
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network?) {
             postValue(true)
@@ -35,21 +42,16 @@ class ConnectivityLiveData(private val context: Context?) : LiveData<Boolean>() 
     @SuppressLint("MissingPermission")
     override fun onActive() {
         super.onActive()
-        context?.let {
-            connectivityManager =
-                it.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            connectivityManager?.let {
-                val activeNetwork: NetworkInfo? = connectivityManager!!.activeNetworkInfo
-                postValue(activeNetwork?.isConnectedOrConnecting == true)
+        connectivityManager?.let {
+            val activeNetwork: NetworkInfo? = connectivityManager!!.activeNetworkInfo
+            postValue(activeNetwork?.isConnectedOrConnecting == true)
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    connectivityManager!!.registerDefaultNetworkCallback(networkCallback)
-                } else {
-                    val builder = NetworkRequest.Builder()
-                    connectivityManager!!.registerNetworkCallback(builder.build(), networkCallback)
-                }
-            } ?: run { postValue(true) }
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                connectivityManager!!.registerDefaultNetworkCallback(networkCallback)
+            } else {
+                val builder = NetworkRequest.Builder()
+                connectivityManager!!.registerNetworkCallback(builder.build(), networkCallback)
+            }
         } ?: run { postValue(true) }
     }
 
